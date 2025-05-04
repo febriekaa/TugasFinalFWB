@@ -62,47 +62,42 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 # 📦 Proyek Web Booking Jasa – *JasaKu*
 
-## 📄 Deskripsi Aplikasi
-
+Deskripsi Aplikasi
 **JasaKu** adalah sebuah platform web berbasis booking yang menghubungkan pengguna dengan berbagai penyedia layanan harian seperti cleaning service, jasa angkut barang, dan perbaikan AC. Aplikasi ini dirancang untuk memudahkan masyarakat dalam mencari, memesan, dan membayar jasa secara online dengan cepat dan aman.
 
-Dengan sistem multi-role (Admin, Vendor, dan Customer), JasaKu menyediakan pengalaman terpadu mulai dari pendaftaran penyedia jasa, manajemen layanan, hingga review setelah pekerjaan selesai. Platform ini dapat diakses oleh siapa saja yang membutuhkan layanan berkualitas tanpa harus repot mencari manual.
 
-### 🔧 Layanan yang Tersedia
+Layanan yang Tersedia
 - **Cleaning Service** (pembersihan rumah, kantor, dll)
 - **Jasa Angkut Barang** (pindahan rumah, angkut logistik)
 - **Perbaikan AC** (service, isi freon, instalasi)
 
-### 🎯 Tujuan
+Tujuan
 Menyediakan sistem pemesanan jasa yang efisien, transparan, dan terpercaya, serta membuka peluang kerja bagi penyedia jasa lokal.
 
-👤 Nama  
+
 **Febri Eka wahyuni**
-🆔 NIM  
 **D0223012**
-Mata Kuliah  
 **Framework web based**
-📅 Tahun  
 **2025**
 
 ---
 
-## 🧩 Role dan Fitur-fiturnya
+Role dan Fitur-fiturnya
 
-### 🛠️ Admin
+ **Admin**
 - Mengelola pengguna (aktif/nonaktif)
 - Menyetujui/menolak layanan vendor
 - Melihat statistik booking dan pembayaran
 - Pantau Laporan
 
-### 🧑‍🔧 Vendor (Penyedia Jasa)
+**Vendor (Penyedia Jasa)**
 - Registrasi & login
 - Membuat dan mengatur layanan
 - Menerima atau menolak booking
 - Melihat status pembayaran
 - Menandai pekerjaan selesai
 
-### 🙋 Customer (Pengguna)
+**Customer (Pengguna)**
 - Registrasi & login
 - Mencari dan memesan layanan
 - Melakukan pembayaran
@@ -111,9 +106,9 @@ Mata Kuliah
 
 ---
 
-## 🗃️ Tabel-tabel Database
+**Tabel-tabel Database**
 
-### 🧾 Tabel: `users`
+Tabel: `users`
 
 | Nama Field | Tipe Data     | Keterangan               |
 |------------|---------------|--------------------------|
@@ -127,7 +122,7 @@ Mata Kuliah
 
 ---
 
-### 🧾 Tabel: `roles`
+Tabel: `roles`
 
 | Nama Field | Tipe Data     | Keterangan                       |
 |------------|---------------|----------------------------------|
@@ -137,7 +132,7 @@ Mata Kuliah
 
 ---
 
-### 🧾 Tabel: `role_user` *(pivot)*
+Tabel: `role_user` *(pivot)*
 
 | Nama Field | Tipe Data   | Keterangan                      |
 |------------|-------------|---------------------------------|
@@ -146,7 +141,7 @@ Mata Kuliah
 
 ---
 
-### 🧾 Tabel: `categories`
+Tabel: `categories`
 
 | Nama Field | Tipe Data     | Keterangan              |
 |------------|---------------|-------------------------|
@@ -156,7 +151,7 @@ Mata Kuliah
 
 ---
 
-### 🧾 Tabel: `services`
+Tabel: `services`
 
 | Nama Field   | Tipe Data     | Keterangan                       |
 |--------------|---------------|----------------------------------|
@@ -172,7 +167,7 @@ Mata Kuliah
 
 ---
 
-### 🧾 Tabel: `bookings`
+Tabel: `bookings`
 
 | Nama Field   | Tipe Data     | Keterangan                      |
 |--------------|---------------|---------------------------------|
@@ -189,7 +184,7 @@ Mata Kuliah
 
 ---
 
-### 🧾 Tabel: `payments`
+Tabel: `payments`
 
 | Nama Field | Tipe Data   | Keterangan                          |
 |------------|-------------|-------------------------------------|
@@ -203,7 +198,7 @@ Mata Kuliah
 
 ---
 
-### 🧾 Tabel: `reviews`
+Tabel: `reviews`
 
 | Nama Field   | Tipe Data     | Keterangan                       |
 |--------------|---------------|----------------------------------|
@@ -217,7 +212,7 @@ Mata Kuliah
 
 ---
 
-## 🔗 Jenis Relasi dan Tabel yang Berelasi
+**Jenis Relasi dan Tabel yang Berelasi**
 
 | Tabel 1     | Tabel 2     | Jenis Relasi     |
 |-------------|-------------|------------------|
