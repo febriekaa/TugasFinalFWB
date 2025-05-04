@@ -76,16 +76,13 @@ Dengan sistem multi-role (Admin, Vendor, dan Customer), JasaKu menyediakan penga
 ### 🎯 Tujuan
 Menyediakan sistem pemesanan jasa yang efisien, transparan, dan terpercaya, serta membuka peluang kerja bagi penyedia jasa lokal.
 
-## 👤 Nama  
+👤 Nama  
 **Febri Eka wahyuni**
-
-## 🆔 NIM  
+🆔 NIM  
 **D0223012**
-
-## 📘 Mata Kuliah  
+Mata Kuliah  
 **Framework web based**
-
-## 📅 Tahun  
+📅 Tahun  
 **2025**
 
 ---
