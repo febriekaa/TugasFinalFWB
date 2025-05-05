@@ -60,10 +60,33 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->
 
+<div align="center">
+
+*Jasaku*   
+*(platform web berbasis booking yang menghubungkan pengguna dengan berbagai penyedia layanan harian)* 
+
+<br>
+
+<img src="unsulbar.png" alt="Logo Kampus" width="100">
+
+<br></br>
+
+*Febri Eka Wahyuni*    
+*D0223012*   
+
+<br>
+
+*Framework Web Based*   
+*2025* 
+
+</div>
+
+------
+
 # 📦 Proyek Web Booking Jasa – *JasaKu*
 
 Deskripsi Aplikasi
-**JasaKu** adalah sebuah platform web berbasis booking yang menghubungkan pengguna dengan berbagai penyedia layanan harian seperti cleaning service, jasa angkut barang, dan perbaikan AC. Aplikasi ini dirancang untuk memudahkan masyarakat dalam mencari, memesan, dan membayar jasa secara online dengan cepat dan aman.
+**JasaKu** adalah 
 
 
 Layanan yang Tersedia
@@ -73,12 +96,6 @@ Layanan yang Tersedia
 
 Tujuan
 Menyediakan sistem pemesanan jasa yang efisien, transparan, dan terpercaya, serta membuka peluang kerja bagi penyedia jasa lokal.
-
-
-**Febri Eka wahyuni**
-**D0223012**
-**Framework web based**
-**2025**
 
 ---
 
