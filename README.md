@@ -63,7 +63,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 <div align="center">
 
 *Jasaku*   
-*(platform web berbasis booking yang menghubungkan pengguna dengan berbagai penyedia layanan harian )* 
+*(platform web berbasis booking yang menghubungkan pengguna dengan berbagai penyedia layanan harian)* 
 
 <br>
 
@@ -85,27 +85,26 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 # 📦 Proyek Web Booking Jasa – *JasaKu*
 
-Deskripsi Aplikasi
+**Deskripsi Aplikasi**  
 **JasaKu** adalah platform web berbasis booking yang menghubungkan pengguna dengan berbagai penyedia layanan harian seperti cleaning service, jasa angkut barang, dan perbaikan AC. Aplikasi ini dirancang untuk memudahkan masyarakat dalam mencari, memesan, dan membayar jasa secara online dengan cepat dan aman.
 
-
-Layanan yang Tersedia
+**Layanan yang Tersedia**
 - **Cleaning Service** (pembersihan rumah, kantor, dll)
 - **Jasa Angkut Barang** (pindahan rumah, angkut logistik)
 - **Perbaikan AC** (service, isi freon, instalasi)
 
-Tujuan
+**Tujuan**  
 Menyediakan sistem pemesanan jasa yang efisien, transparan, dan terpercaya, serta membuka peluang kerja bagi penyedia jasa lokal.
 
 ---
 
-Role dan Fitur-fiturnya
+## 🎯 Role dan Fitur-fiturnya
 
- **Admin**
+**Admin**
 - Mengelola pengguna (aktif/nonaktif)
 - Menyetujui/menolak layanan vendor
 - Melihat statistik booking dan pembayaran
-- Pantau Laporan
+- Pantau laporan
 
 **Vendor (Penyedia Jasa)**
 - Registrasi & login
@@ -123,9 +122,9 @@ Role dan Fitur-fiturnya
 
 ---
 
-**Tabel-tabel Database**
+## 🗂️ Tabel-tabel Database
 
-Tabel: `users`
+### Tabel: `users`
 
 | Nama Field | Tipe Data     | Keterangan               |
 |------------|---------------|--------------------------|
@@ -139,7 +138,7 @@ Tabel: `users`
 
 ---
 
-Tabel: `roles`
+### Tabel: `roles`
 
 | Nama Field | Tipe Data     | Keterangan                       |
 |------------|---------------|----------------------------------|
@@ -149,7 +148,7 @@ Tabel: `roles`
 
 ---
 
-Tabel: `role_user` *(pivot)*
+### Tabel: `role_user` *(pivot)*
 
 | Nama Field | Tipe Data   | Keterangan                      |
 |------------|-------------|---------------------------------|
@@ -158,33 +157,23 @@ Tabel: `role_user` *(pivot)*
 
 ---
 
-Tabel: `categories`
+### Tabel: `services`
 
-| Nama Field | Tipe Data     | Keterangan              |
-|------------|---------------|-------------------------|
-| id         | bigIncrements | Primary Key             |
-| name       | string        | Nama kategori layanan   |
-| timestamps | timestamps    | created_at & updated_at |
-
----
-
-Tabel: `services`
-
-| Nama Field   | Tipe Data     | Keterangan                       |
-|--------------|---------------|----------------------------------|
-| id           | bigIncrements | Primary Key                      |
+| Nama Field   | Tipe Data     | Keterangan                        |
+|--------------|---------------|-----------------------------------|
+| id           | bigIncrements | Primary Key                       |
 | user_id      | foreignId     | Relasi ke penyedia jasa (`users`) |
-| category_id  | foreignId     | Relasi ke `categories`           |
-| title        | string        | Nama layanan                     |
-| description  | text          | Deskripsi                        |
-| price        | decimal       | Harga jasa                       |
-| location     | string        | Lokasi layanan                   |
-| status       | enum          | pending / approved / rejected    |
-| timestamps   | timestamps    | created_at & updated_at          |
+| category     | string        | Kategori layanan (tanpa tabel khusus) |
+| title        | string        | Nama layanan                      |
+| description  | text          | Deskripsi                         |
+| price        | decimal       | Harga jasa                        |
+| location     | string        | Lokasi layanan                    |
+| status       | enum          | pending / approved / rejected     |
+| timestamps   | timestamps    | created_at & updated_at           |
 
 ---
 
-Tabel: `bookings`
+### Tabel: `bookings`
 
 | Nama Field   | Tipe Data     | Keterangan                      |
 |--------------|---------------|---------------------------------|
@@ -196,12 +185,14 @@ Tabel: `bookings`
 | booking_time | time          | Waktu booking                   |
 | location     | string        | Lokasi layanan                  |
 | note         | text          | Catatan tambahan                |
+| rating       | tinyInteger   | Skor 1–5 (opsional)             |
+| comment      | text          | Ulasan (opsional)               |
 | status       | enum          | pending / confirmed / completed |
 | timestamps   | timestamps    | created_at & updated_at         |
 
 ---
 
-Tabel: `payments`
+### Tabel: `payments`
 
 | Nama Field | Tipe Data   | Keterangan                          |
 |------------|-------------|-------------------------------------|
@@ -215,29 +206,14 @@ Tabel: `payments`
 
 ---
 
-Tabel: `reviews`
+## 🔗 Jenis Relasi dan Tabel yang Berelasi
 
-| Nama Field   | Tipe Data     | Keterangan                       |
-|--------------|---------------|----------------------------------|
-| id           | bigIncrements | Primary Key                      |
-| booking_id   | foreignId     | Relasi ke `bookings`             |
-| customer_id  | foreignId     | Relasi ke `users`                |
-| vendor_id    | foreignId     | Relasi ke `users`                |
-| rating       | tinyInteger   | Skor 1–5                         |
-| comment      | text          | Ulasan                           |
-| timestamps   | timestamps    | created_at & updated_at          |
+| Tabel 1     | Tabel 2     | Jenis Relasi                             |
+|-------------|-------------|------------------------------------------|
+| users       | roles       | many-to-many (via `role_user`)           |
+| users       | services    | one-to-many                              |
+| users       | bookings    | one-to-many (sebagai customer & vendor)  |
+| services    | bookings    | one-to-many                              |
+| bookings    | payments    | one-to-one                               |
 
 ---
-
-**Jenis Relasi dan Tabel yang Berelasi**
-
-| Tabel 1     | Tabel 2     | Jenis Relasi     |
-|-------------|-------------|------------------|
-| users       | roles       | many-to-many     |
-| users       | services    | one-to-many      |
-| users       | bookings    | one-to-many (as customer & vendor) |
-| categories  | services    | one-to-many      |
-| services    | bookings    | one-to-many      |
-| bookings    | payments    | one-to-one       |
-| bookings    | reviews     | one-to-one       |
-
