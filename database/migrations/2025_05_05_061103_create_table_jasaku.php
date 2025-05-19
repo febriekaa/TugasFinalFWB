@@ -29,7 +29,7 @@ return new class extends Migration
 
         // Pivot Table: role_user
         Schema::create('role_user', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('user')->onDelete('cascade');
             $table->foreignId('role_id')->constrained('roles')->onDelete('cascade');
             $table->primary(['user_id', 'role_id']);
         });
@@ -37,7 +37,7 @@ return new class extends Migration
         // Services
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // vendor
+            $table->foreignId('user_id')->constrained('user')->onDelete('cascade'); // vendor
             $table->string('category'); // langsung string tanpa tabel kategori
             $table->string('title');
             $table->text('description');
@@ -50,8 +50,8 @@ return new class extends Migration
         // Bookings
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('vendor_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('customer_id')->constrained('user')->onDelete('cascade');
+            $table->foreignId('vendor_id')->constrained('user')->onDelete('cascade');
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
             $table->date('booking_date');
             $table->time('booking_time');
@@ -83,6 +83,6 @@ return new class extends Migration
         Schema::dropIfExists('services');
         Schema::dropIfExists('role_user');
         Schema::dropIfExists('roles');
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('user');
     }
 };
