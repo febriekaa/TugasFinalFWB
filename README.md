@@ -73,3 +73,114 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
   <strong>Framework Web Based</strong><br/><br/>
   <strong>2025</strong>
 </p>
+
+<h1>Role dan Fitur</h1>
+
+
+### fitur Admin
+
+| *Fitur*              | *Deskripsi*                                                                 |
+|------------------------|--------------------------------------------------------------------------------|
+| Kelola Data Pengguna   | Menambah, mengubah, dan menghapus user dengan peran (admin, teknisi, customer). |
+| Kelola Data Cabang     | Mengatur informasi cabang Repairin seperti alamat, jam operasional, dan kontak. |
+| Kelola Data Layanan    | Menambah, mengedit, dan menghapus layanan perbaikan seperti servis HP, laptop, dan lainnya. |
+| Kelola Booking         | Melihat semua permintaan layanan yang masuk dari customer beserta statusnya.    |
+| Kelola Transaksi       | Melihat dan mengelola data pembayaran dari customer untuk layanan perbaikan.    |
+
+### Fitur Teknisi
+
+| *Fitur*                  | *Deskripsi*                                                                 |
+|----------------------------|-------------------------------------------------------------------------------|
+| Melihat Daftar Booking     | Menampilkan daftar permintaan perbaikan yang dialokasikan ke teknisi tersebut. |
+| Konfirmasi Booking         | Menerima atau menolak permintaan layanan perbaikan dari customer.             |
+| Mengatur Status Booking    | Menandai status proses perbaikan: menunggu, diproses, selesai, dibatalkan, dll. |
+
+### Fitur Customer
+
+| *Fitur*                         | *Deskripsi*                                                                                   |
+|----------------------------------|--------------------------------------------------------------------------------------------------|
+| Melihat & Memilih Cabang         | Menampilkan daftar cabang Repairin yang tersedia untuk dipilih.                                 |
+| Melihat & Memilih Layanan        | Menampilkan layanan perbaikan seperti servis HP, laptop, TV, dan lainnya.                       |
+| Melihat & Memilih Teknisi        | Memilih teknisi yang tersedia dari cabang yang telah dipilih.                                   |
+| Melihat & Memilih Jadwal         | Menentukan tanggal dan waktu layanan perbaikan.                                                 |
+| Memilih Metode Pembayaran        | Memilih metode pembayaran  tunai                |
+| Memilih Jenis Layanan (Tempat/Home) | Menentukan apakah akan datang ke cabang atau meminta teknisi datang ke lokasi (home service). |
+| Melihat Riwayat Booking          | Melihat daftar layanan perbaikan sebelumnya dan statusnya.                                      |
+
+### Tabel-tabel database beserta field dan tipe datanya
+
+### 1. Tabel: users
+
+| *Field*     | *Tipe Data*                 | *Keterangan*                                                |
+|---------------|-------------------------------|----------------------------------------------------------------|
+| id            | BIGINT UNSIGNED AI            | Primary key                                                    |
+| name          | VARCHAR(100)                  | Nama lengkap user                                              |
+| email         | VARCHAR(150) UNIQUE           | Email user (unik)                                              |
+| password      | VARCHAR(255)                  | Password (dihash)                                              |
+| role          | ENUM('admin','teknisi','customer') | Jenis peran pengguna dalam sistem Repairin                     |
+| created_at    | TIMESTAMP                     | Waktu data dibuat                                              |
+| updated_at    | TIMESTAMP                     | Waktu terakhir data diperbarui                                 |
+
+### 2. Tabel: cabang
+
+| *Field*     | *Tipe Data*        | *Keterangan*                          |
+|---------------|----------------------|------------------------------------------|
+| id            | BIGINT UNSIGNED AI   | Primary key                              |
+| nama          | VARCHAR(100)         | Nama cabang Repairin                     |
+| alamat        | TEXT                 | Alamat lengkap cabang                    |
+| kota_kab      | VARCHAR(100)         | Nama kota atau kabupaten lokasi cabang   |
+| created_at    | TIMESTAMP            | Waktu data dibuat                        |
+| updated_at    | TIMESTAMP            | Waktu terakhir data diperbarui           |
+
+
+### 3. Tabel: layanan
+
+| *Field*     | *Tipe Data*        | *Keterangan*                                      |
+|---------------|----------------------|------------------------------------------------------|
+| id            | BIGINT UNSIGNED AI   | Primary key                                          |
+| nama          | VARCHAR(100)         | Nama layanan perbaikan                              |
+| deskripsi     | TEXT NULL            | Deskripsi layanan perbaikan (opsional)              |
+| harga         | DECIMAL(10,2)        | Biaya layanan perbaikan                             |
+| durasi        | INT                  | Perkiraan durasi layanan (dalam hari)              |
+| created_at    | TIMESTAMP            | Waktu data dibuat                                   |
+| updated_at    | TIMESTAMP            | Waktu terakhir data diperbarui                      |
+
+
+### 4. Tabel: pemesanan
+
+| *Field*         | *Tipe Data*              | *Keterangan*                                                                 |
+|-------------------|----------------------------|---------------------------------------------------------------------------------|
+| id                | BIGINT UNSIGNED AI         | Primary key                                                                     |
+| user_id           | BIGINT UNSIGNED            | Foreign key → users.id (customer)                                               |
+| cabang_id         | BIGINT UNSIGNED            | Foreign key → cabang.id                                                         |
+| layanan_id        | BIGINT UNSIGNED            | Foreign key → layanan.id                                                        |
+| teknisi_id        | BIGINT UNSIGNED            | Foreign key → users.id (role = teknisi)                                         |
+| penjadwalan       | DATETIME                   | Tanggal dan waktu layanan dijadwalkan                                           |
+| metode_layanan    | ENUM('cabang', 'home')     | Metode layanan: di cabang Repairin atau home service                            |
+| lokasi            | TEXT NULL                  | Alamat home service (jika metode_layanan = 'home')                              |
+| jumlah_bayar      | DECIMAL(10,2)              | Total biaya untuk satu layanan                                                  |
+| status            | ENUM('menunggu','diterima','selesai','dibatalkan') | Status dari permintaan layanan                         |
+| created_at        | TIMESTAMP                  | Waktu data dibuat                                                               |
+| updated_at        | TIMESTAMP                  | Waktu terakhir data diperbarui                                                  |
+
+### 5. Tabel: transaksi
+
+| *Field*           | *Tipe Data*                  | *Keterangan*                                                |
+|---------------------|--------------------------------|----------------------------------------------------------------|
+| id                  | BIGINT UNSIGNED AI             | Primary key                                                    |
+| pemesanan_id        | BIGINT UNSIGNED                | Foreign key → pemesanan.id                                     |
+| status_pembayaran   | ENUM('pending','paid','failed')| Status pembayaran: menunggu, berhasil, atau gagal              |
+| paid_at             | TIMESTAMP NULL                 | Waktu saat pembayaran diselesaikan                             |
+| created_at          | TIMESTAMP                      | Waktu data dibuat                                              |
+| updated_at          | TIMESTAMP                      | Waktu terakhir data diperbarui                                 |
+
+
+### Jenis Relasi dan Tabel yang Berelasi
+
+| *Tabel Asal* | *Kolom FK*    | *Tabel Tujuan* | *Jenis Relasi* | *Keterangan*                                                                 |
+|----------------|------------------|------------------|------------------|---------------------------------------------------------------------------------|
+| pemesanan      | user_id          | users            | Many-to-One      | Banyak pemesanan dimiliki oleh satu customer (user)                            |
+| pemesanan      | cabang_id        | cabang           | Many-to-One      | Banyak pemesanan berada di satu cabang                                         |
+| pemesanan      | layanan_id       | layanan          | Many-to-One      | Banyak pemesanan mengacu ke satu layanan perbaikan                             |
+| pemesanan      | teknisi_id       | users            | Many-to-One      | Banyak pemesanan dilayani oleh satu teknisi (user)                             |
+| transaksi      | pemesanan_id     | pemesanan        | One-to-One       | Satu transaksi hanya untuk satu pemesanan layanan                              |
