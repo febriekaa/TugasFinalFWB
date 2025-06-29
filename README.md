@@ -82,8 +82,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 | *Fitur*              | *Deskripsi*                                                                 |
 |------------------------|--------------------------------------------------------------------------------|
 | Kelola Data Pengguna   | Menambah, mengubah, dan menghapus user dengan peran (admin, teknisi, customer). |
-| Kelola Data Cabang     | Mengatur informasi cabang Repairin seperti alamat, jam operasional, dan kontak. |
-| Kelola Data Layanan    | Menambah, mengedit, dan menghapus layanan perbaikan seperti servis HP, laptop, dan lainnya. |
+| Kelola Data Cabang     | Mengatur informasi cabang Jasaku seperti alamat, jam operasional, dan kontak. |
+| Kelola Data Layanan    | Menambah, mengedit, dan menghapus layanan perbaikan seperti cleaning service, jasa angkut barang, atau perbaikan AC. |
 | Kelola Booking         | Melihat semua permintaan layanan yang masuk dari customer beserta statusnya.    |
 | Kelola Transaksi       | Melihat dan mengelola data pembayaran dari customer untuk layanan perbaikan.    |
 
@@ -100,7 +100,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 | *Fitur*                         | *Deskripsi*                                                                                   |
 |----------------------------------|--------------------------------------------------------------------------------------------------|
 | Melihat & Memilih Cabang         | Menampilkan daftar cabang Repairin yang tersedia untuk dipilih.                                 |
-| Melihat & Memilih Layanan        | Menampilkan layanan perbaikan seperti servis HP, laptop, TV, dan lainnya.                       |
+| Melihat & Memilih Layanan        | Menampilkan layanan perbaikan seperti cleaning service, jasa angkut barang, atau perbaikan AC.                       |
 | Melihat & Memilih Teknisi        | Memilih teknisi yang tersedia dari cabang yang telah dipilih.                                   |
 | Melihat & Memilih Jadwal         | Menentukan tanggal dan waktu layanan perbaikan.                                                 |
 | Memilih Metode Pembayaran        | Memilih metode pembayaran  tunai                |
